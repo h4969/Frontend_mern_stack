@@ -1,13 +1,15 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const NavBar = () => {
+
+const NavBar = ({ onToggleSidebar }) => {
   const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const loginToken = localStorage.getItem('loginToken');
 
   const logoutHandler = () => {
-    if (confirm("Are you sure to logout?")) {
+    if (window.confirm("Are you sure to logout?")) {
       localStorage.removeItem("loginToken");
       localStorage.removeItem("firmId");
       localStorage.removeItem("firmName");
@@ -15,10 +17,22 @@ const NavBar = () => {
     }
   };
 
+  const toggleSidebar = () => {
+    const newState = !sidebarOpen;
+    setSidebarOpen(newState);
+    if (onToggleSidebar) onToggleSidebar(newState);
+  };
+
   return (
     <div className="navSection">
-      <div>Vendor Dashboard</div>
-      <div>
+      {/* Hamburger (only mobile via CSS) */}
+      <button className="hamburger" onClick={toggleSidebar}>
+        ☰
+      </button>
+
+      <div className="navTitle">Vendor Dashboard</div>
+
+      <div className="navButtons">
         {!loginToken ? (
           <>
             <button onClick={() => navigate('/login')}>Login</button>
@@ -33,3 +47,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
+
+

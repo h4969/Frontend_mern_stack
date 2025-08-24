@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../data/apiPath';
 
@@ -74,12 +73,13 @@ const AllProducts = () => {
 
     return (
         <div className="product-container">
-            <h2 class="heading">Your Products</h2>
+            <h2 className="heading">Your Products</h2>
             <table className="product-table">
                 <thead>
                     <tr>
                         <th>Product Name</th>
                         <th>Price</th>
+                        <th>Description</th> {/* New column */}
                         <th>Image</th>
                         <th>Actions</th>
                     </tr>
@@ -89,6 +89,7 @@ const AllProducts = () => {
                         <tr key={item._id}>
                             <td>{item.productName}</td>
                             <td>{item.price}</td>
+                            <td>{item.description || '—'}</td> {/* Display description */}
                             <td>
                                 {item.image && (
                                     <img 

@@ -1,11 +1,11 @@
 
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SideBar = ({ showFirmTitle }) => {
+
+const SideBar = ({ showFirmTitle, isOpen }) => {
   return (
-    <div className="sideBarSection">
+    <div className={`sideBarSection ${isOpen ? 'open' : ''}`}>
       <ul>
         {showFirmTitle && <li><Link to="/add-firm">Add Firm</Link></li>}
         <li><Link to="/add-product">Add Product</Link></li>
@@ -17,3 +17,9 @@ const SideBar = ({ showFirmTitle }) => {
 };
 
 export default SideBar;
+
+
+
+
+
+

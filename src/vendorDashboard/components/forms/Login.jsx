@@ -52,9 +52,10 @@ const Login = ({ showWelcomeHandler }) => {
   };
 
   return (
+    <div className='loginPage'>
     <div className="loginSection">
       <form className='authForm' onSubmit={loginHandler} autoComplete='off'>
-        <h3>Vendor Login</h3>
+        <marquee><h3>Vendor Login</h3></marquee>
         <label>Email</label>
         <input
           type="text"
@@ -78,7 +79,11 @@ const Login = ({ showWelcomeHandler }) => {
         </div>
       </form>
     </div>
+    </div>
   );
 };
 
 export default Login;
+
+
+

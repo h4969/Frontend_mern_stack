@@ -41,7 +41,7 @@ const handleSubmit=async(e)=>{
     <div className='registerSection'>
          
         <form className='authForm' onSubmit={handleSubmit} autoComplete='off'>
-          <h3>Vendor Register</h3>
+          <marquee><h3>Vendor Register</h3></marquee>
           <label>Username</label>
           <input type='text' name='username'value={username} onChange={(e)=> setUsername(e.target.value)}placeholder='enter your name'/><br/>
             <label>Email</label>
@@ -57,6 +57,6 @@ const handleSubmit=async(e)=>{
   )
 }
 
-export default Register
+export default Register;
 
 

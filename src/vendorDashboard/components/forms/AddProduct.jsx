@@ -53,7 +53,7 @@ const AddProduct = () => {
       const response = await fetch(`${API_URL}/product/add-product/${firmId}`, {
         method: 'POST',
         headers: {
-           Authorization: `Bearer ${loginToken}`,
+          Authorization: `Bearer ${loginToken}`,
         },
         body: formData,
       });
@@ -62,13 +62,13 @@ const AddProduct = () => {
 
       if (response.ok) {
         alert('Product added successfully');
-      
-      setProductName("");
-      setPrice("");
-      setCategory([]);
-      setBestSeller(false);
-      setImage(null);
-      setDescription("");
+
+        setProductName("");
+        setPrice("");
+        setCategory([]);
+        setBestSeller(false);
+        setImage(null);
+        setDescription("");
       } else {
         alert(data.error || 'Failed to add product');
       }
@@ -83,21 +83,41 @@ const AddProduct = () => {
     <div className="firmSection">
       <form className="tableForm" onSubmit={handleAddProduct}>
         <h3>Add Product</h3>
+
         <label>Product Name</label>
-        <input type="text" value={productName} onChange={(e) => setProductName(e.target.value)} />
+        <input 
+          type="text" 
+          value={productName} 
+          onChange={(e) => setProductName(e.target.value)} 
+        />
+
         <label>Price</label>
-        <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
+        <input 
+          type="text" 
+          value={price} 
+          onChange={(e) => setPrice(e.target.value)} 
+        />
 
         <div className="checkInp">
           <label>Category</label>
           <div className="inputsContainer">
             <div className="checboxContainer">
               <label>Veg</label>
-              <input type="checkbox" value="veg" checked={category.includes('veg')} onChange={handleCategoryChange} />
+              <input 
+                type="checkbox" 
+                value="veg" 
+                checked={category.includes('veg')} 
+                onChange={handleCategoryChange} 
+              />
             </div>
             <div className="checboxContainer">
               <label>Non-Veg</label>
-              <input type="checkbox" value="non-veg" checked={category.includes('non-veg')} onChange={handleCategoryChange} />
+              <input 
+                type="checkbox" 
+                value="non-veg" 
+                checked={category.includes('non-veg')} 
+                onChange={handleCategoryChange} 
+              />
             </div>
           </div>
         </div>
@@ -107,19 +127,37 @@ const AddProduct = () => {
           <div className="inputsContainer">
             <div className="checboxContainer">
               <label>Yes</label>
-              <input type="radio" value="true" checked={bestSeller === true} onChange={handleBestSeller} />
+              <input 
+                type="radio" 
+                value="true" 
+                checked={bestSeller === true} 
+                onChange={handleBestSeller} 
+              />
             </div>
             <div className="checboxContainer">
               <label>No</label>
-              <input type="radio" value="false" checked={bestSeller === false} onChange={handleBestSeller} />
+              <input 
+                type="radio" 
+                value="false" 
+                checked={bestSeller === false} 
+                onChange={handleBestSeller} 
+              />
             </div>
           </div>
         </div>
 
         <label>Description</label>
-        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          rows="4"
+          cols="50"
+          placeholder="Enter product description..."
+        ></textarea>
+
         <label>Product Image</label>
         <input type="file" onChange={handleImageUpload} />
+
         <br />
         <div className="btnSubmit">
           <button type="submit">Submit</button>
@@ -130,5 +168,3 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
-
-
